@@ -5,11 +5,10 @@ export default StyleSheet.create({
         alignItems: "center"
     },
     title: {
-        fontSize: 40,
+        fontSize: 35,
         fontFamily: "Serif-Bold",
-        color: "#7776DF",
+        color: "#e0ffff",
         textAlign: "center"
-
     },
     buttonContainer: {
         flexDirection: "row",
@@ -18,7 +17,7 @@ export default StyleSheet.create({
         width: width * 0.7,
     },
     wallet: {
-        backgroundColor: "#36367A",
+        backgroundColor: "#34377A99",
         paddingVertical: 25,
         width: width * 0.8,
         borderRadius: 10,
@@ -29,5 +28,13 @@ export default StyleSheet.create({
         fontSize: 15,
         fontFamily: "Serif-Regular",
         color: "#fff"
+    }, titleIcon: {
+        width: 30,
+        height: 30
+    },
+    filterContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        width: width * 0.8,
     }
 })

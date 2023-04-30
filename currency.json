@@ -1,0 +1,82 @@
+[
+    {
+        "name": "USD",
+        "value": 1.00
+    },
+    {
+        "name": "EUR",
+        "value": 0.83
+    },
+    {
+        "name": "GBP",
+        "value": 0.72
+    },
+    {
+        "name": "JPY",
+        "value": 109.53
+    },
+    {
+        "name": "CHF",
+        "value": 0.91
+    },
+    {
+        "name": "CAD",
+        "value": 1.22
+    },
+    {
+        "name": "AUD",
+        "value": 1.29
+    },
+    {
+        "name": "NZD",
+        "value": 1.40
+    },
+    {
+        "name": "HKD",
+        "value": 7.77
+    },
+    {
+        "name": "SGD",
+        "value": 1.33
+    },
+    {
+        "name": "CNY",
+        "value": 6.46
+    },
+    {
+        "name": "KRW",
+        "value": 1132.80
+    },
+    {
+        "name": "MXN",
+        "value": 20.15
+    },
+    {
+        "name": "BRL",
+        "value": 5.45
+    },
+    {
+        "name": "RUB",
+        "value": 74.05
+    },
+    {
+        "name": "TRY",
+        "value": 8.56
+    },
+    {
+        "name": "INR",
+        "value": 74.16
+    },
+    {
+        "name": "ZAR",
+        "value": 14.24
+    },
+    {
+        "name": "AED",
+        "value": 3.67
+    },
+    {
+        "name": "SAR",
+        "value": 3.75
+    }
+]
