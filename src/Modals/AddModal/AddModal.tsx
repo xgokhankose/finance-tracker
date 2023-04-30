@@ -18,13 +18,17 @@ interface ModalProps {
     onClose: () => void;
     onSave: (amount: number, currency: string, description: string, income: boolean) => void;
     income: boolean;
-    title: string
+    title: string;
+    amountProp: number;
+    currencyProp: string;
+    descriptionProp: string;
+
 }
 
-const AddModal: React.FC<ModalProps> = ({ visible, onClose, onSave, income, title }) => {
-    const [amount, setAmount] = useState<number>(0);
-    const [currency, setCurrency] = useState<string>('USD');
-    const [description, setDescription] = useState<string>('');
+const AddModal: React.FC<ModalProps> = ({ onClose, onSave, income, title, amountProp, currencyProp, descriptionProp }) => {
+    const [amount, setAmount] = useState<number>(amountProp);
+    const [currency, setCurrency] = useState<string>(currencyProp);
+    const [description, setDescription] = useState<string>(descriptionProp);
 
     const handleSave = () => {
         onSave(amount, currency, description, income);

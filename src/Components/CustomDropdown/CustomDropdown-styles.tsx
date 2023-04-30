@@ -18,7 +18,6 @@ export default StyleSheet.create({
         alignItems: "center",
         marginTop: 5,
         flexDirection: "row",
-        //justifyContent: "space-between",
         paddingLeft: 10,
         position: 'relative',
         zIndex: 1,

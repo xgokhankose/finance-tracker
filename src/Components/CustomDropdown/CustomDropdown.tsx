@@ -45,7 +45,7 @@ const CustomDropdown = ({ selectedOnPress }: Props) => {
                     placeholder="Choose currency"
                     style={styles.dropdown_input}
                     onChangeText={setSearchInput}
-                    placeholderTextColor="gray"
+                    placeholderTextColor="#ffffff90"
                     value={searchInput}
                 />
                 <TouchableOpacity onPress={dropdownControl} style={styles.dropdown_button}>

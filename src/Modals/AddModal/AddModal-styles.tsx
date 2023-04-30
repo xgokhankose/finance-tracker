@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
         padding: 8,
         height: 70,
         width: device.width * 0.35,
+        color:"#fff"
     },
     button: {
         backgroundColor: 'red',

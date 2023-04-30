@@ -53,14 +53,61 @@ const walletSlice = createSlice({
             if (!transactionToRemove) {
                 return;
             }
-            state.transactions = state.transactions.filter((t) => t.date !== action.payload);
             state.totalAmount -= transactionToRemove.income ? transactionToRemove.amount : -transactionToRemove.amount;
             state.totalIncome -= transactionToRemove.income ? transactionToRemove.amount : 0;
             state.totalExpense -= transactionToRemove.income ? 0 : transactionToRemove.amount;
+            state.transactions = state.transactions.filter((t) => t.date !== action.payload);
         },
+        editBalance: (state, action: PayloadAction<string>) => {
+            const transaction = action.payload;
+            const initialCurrencyObj = currency.find(obj => obj.name === state.currency);
+            const incomingCurrencyObj = currency.find(obj => obj.name === transaction);
+            const ratio = initialCurrencyObj && incomingCurrencyObj ? initialCurrencyObj.value / incomingCurrencyObj.value : 0
+
+            state.totalAmount *= ratio
+            state.totalIncome *= ratio
+            state.totalExpense *= ratio
+            state.currency = action.payload;
+        },
+        updateTransactionByDate: (state, action: PayloadAction<{ date: string; updatedTransaction: Transaction }>) => {
+            const { date, updatedTransaction } = action.payload;
+          
+            const transactionToUpdate = state.transactions.find((t) => t.date === date);
+          
+            if (!transactionToUpdate) {
+              return;
+            }
+          
+            transactionToUpdate.amount = updatedTransaction.amount;
+            transactionToUpdate.currency = updatedTransaction.currency;
+            transactionToUpdate.description = updatedTransaction.description;
+            transactionToUpdate.date = updatedTransaction.date;
+            transactionToUpdate.income = updatedTransaction.income;
+          
+            const initialCurrencyObj = currency.find((obj) => obj.name === state.currency);
+            const incomingCurrencyObj = currency.find((obj) => obj.name === updatedTransaction.currency);
+            const ratio = initialCurrencyObj && incomingCurrencyObj ? initialCurrencyObj.value / incomingCurrencyObj.value : 0;
+          
+            state.totalAmount =
+              state.totalAmount -
+              (transactionToUpdate.income ? transactionToUpdate.amount : -transactionToUpdate.amount) +
+              (updatedTransaction.income ? updatedTransaction.amount : -updatedTransaction.amount) * ratio;
+          
+            state.totalIncome =
+              state.totalIncome -
+              (transactionToUpdate.income ? transactionToUpdate.amount : 0) +
+              (updatedTransaction.income ? updatedTransaction.amount : 0) * ratio;
+          
+            state.totalExpense =
+              state.totalExpense -
+              (transactionToUpdate.income ? 0 : transactionToUpdate.amount) +
+              (updatedTransaction.income ? 0 : updatedTransaction.amount) * ratio;
+          },
+          
+
     },
 });
 
-export const { addTransaction, removeTransactionByDate } = walletSlice.actions;
+export const { addTransaction, removeTransactionByDate, editBalance, updateTransactionByDate } = walletSlice.actions;
 
 export default walletSlice.reducer;
