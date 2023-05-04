@@ -75,7 +75,7 @@ const walletSlice = createSlice({
         },
         updateTransactionByDate: (state, action: PayloadAction<{ date: string; updatedTransaction: Transaction }>) => {
             const { date, updatedTransaction } = action.payload;
-
+            console.log(updatedTransaction)
             const transactionToUpdate = state.transactions.find((t) => t.date === date);
 
             if (!transactionToUpdate) {
@@ -88,16 +88,9 @@ const walletSlice = createSlice({
             const oldRatio = transactionCurrencyObj && initialCurrencyObj ? initialCurrencyObj.value / transactionCurrencyObj.value : 0;
             const newRatio = initialCurrencyObj && incomingCurrencyObj ? initialCurrencyObj.value / incomingCurrencyObj.value : 0;
 
-            transactionToUpdate.amount = updatedTransaction.amount;
-            transactionToUpdate.currency = updatedTransaction.currency;
-            transactionToUpdate.description = updatedTransaction.description;
-            transactionToUpdate.date = updatedTransaction.date;
-            transactionToUpdate.income = updatedTransaction.income;
-
             state.totalAmount = state.totalAmount -
                 (transactionToUpdate.income ? transactionToUpdate.amount * oldRatio : -transactionToUpdate.amount * oldRatio) +
                 (updatedTransaction.income ? updatedTransaction.amount * newRatio : -updatedTransaction.amount * newRatio);
-
             state.totalIncome =
                 state.totalIncome -
                 (transactionToUpdate.income ? transactionToUpdate.amount * oldRatio : 0) +
@@ -108,6 +101,11 @@ const walletSlice = createSlice({
                 (transactionToUpdate.income ? 0 : transactionToUpdate.amount * oldRatio) +
                 (updatedTransaction.income ? 0 : updatedTransaction.amount * newRatio);
 
+            transactionToUpdate.amount = updatedTransaction.amount;
+            transactionToUpdate.currency = updatedTransaction.currency;
+            transactionToUpdate.description = updatedTransaction.description;
+            transactionToUpdate.date = updatedTransaction.date;
+            transactionToUpdate.income = updatedTransaction.income;
         },
 
 

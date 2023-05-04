@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
         fontFamily: "Roboto-Regular",
         marginBottom: 10,
         fontSize: 13,
+        maxWidth: device.width * 0.3
 
     },
     containerTitle: {
