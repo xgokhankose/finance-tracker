@@ -67,7 +67,7 @@ const walletSlice = createSlice({
             const transaction = action.payload;
             const initialCurrencyObj = currency.find(obj => obj.name === state.currency);
             const incomingCurrencyObj = currency.find(obj => obj.name === transaction);
-            const ratio = initialCurrencyObj && incomingCurrencyObj ? initialCurrencyObj.value / incomingCurrencyObj.value : 0
+            const ratio = initialCurrencyObj && incomingCurrencyObj ? incomingCurrencyObj.value / initialCurrencyObj.value : 0
             state.totalAmount *= ratio
             state.totalIncome *= ratio
             state.totalExpense *= ratio
